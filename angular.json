@@ -34,7 +34,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/app/angularjs/ajs-app.module.js"
             ],
             "styles": [
               "src/styles.css"

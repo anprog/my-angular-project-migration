@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 
-import { UpgradeModule } from '@angular/upgrade/static';
-import './angularjs/ajs-hello-world'; // Importa il modulo AngularJS
+import {downgradeComponent, UpgradeModule} from '@angular/upgrade/static';
 
+import angular from 'angular'; // Importa il modulo AngularJS
+import './angularjs/ajs-app.module.js';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,13 @@ import './angularjs/ajs-hello-world'; // Importa il modulo AngularJS
 })
 export class AppModule {
   constructor(private upgrade: UpgradeModule) {}
-
-  ngDoBootstrap() {
-    this.upgrade.bootstrap(document.body, ['ajsApp'], { strictDi: true });
-  }
 }
+
+// Downgrade del componente per AngularJS con il binding dell'input
+angular.module('ajsApp').directive(
+  'helloWorld',
+  downgradeComponent({
+    component: HelloWorldComponent,
+    inputs: ['name']  // Specifica il parametro di input
+  })
+);
