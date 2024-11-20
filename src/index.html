@@ -1,0 +1,55 @@
+<!--<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularHelloWorld</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Hybrid App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<!-- Componente AngularJS -->
+<!--<hello-world></hello-world>-->
+
+<!--
+<div ng-app="ajsApp">
+  <hello-world name="'John Doe'"></hello-world>
+  <div ng-controller="MainCtrl as ctrl">
+    <hello-world name="ctrl.username"></hello-world>
+  </div>
+</div>
+-->
+
+
+<hello-world name="'Static Name'"></hello-world>
+
+
+
+
+<!-- Componente Angular -->
+<app-root></app-root>  <!-- Assicurati che questo tag corrisponda al selettore del componente -->
+
+<!-- Includi AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+<!-- Includi Zone.js -->
+<script src="https://unpkg.com/zone.js"></script>
+
+<!-- Includi i file JavaScript generati da Angular come moduli -->
+<script type="module" src="main.js"></script>
+</body>
+</html>
