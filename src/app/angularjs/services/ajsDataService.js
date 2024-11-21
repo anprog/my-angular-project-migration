@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-export const dataService = angular.module('dataService', [])
-  .service('DataService', function() {
+export const ajsDataService = angular.module('ajsDataService', [])
+  .service('AjsDataService', function() {
     this.getData = function() {
       return {
         personaA: {

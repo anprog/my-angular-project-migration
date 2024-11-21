@@ -1,12 +1,13 @@
 import angular from 'angular';
-import {MainController} from './controllers/mainController';
-import {dataService} from "./services/dataService";
+
+import {ajsDataService} from "./services/ajsDataService";
 import {downgradeComponent} from "@angular/upgrade/static";
 import {HelloWorldComponent} from "../hello-world/hello-world.component";
+import {ajsMainController} from "./controllers/ajsMainController";
 
-export const ajsApp = angular.module('ajsApp', [dataService.name]); // Includo il modulo del servizio
+export const ajsApp = angular.module('ajsApp', [ajsDataService.name]); // Includo il modulo del servizio
 
-ajsApp.controller('MainController', MainController);
+ajsApp.controller('MainController', ajsMainController);
 
 /*Non è necessario importare esplicitamente la direttiva helloWorld.directive.js nel file app.js
   perché in AngularJS, le direttive vengono registrate direttamente nel modulo AngularJS (ajsApp).
