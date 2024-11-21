@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HelloWorldComponent} from './hello-world/hello-world.component';
 
 import {downgradeComponent, UpgradeModule} from '@angular/upgrade/static';
 
@@ -24,7 +24,7 @@ import './angularjs/ajs-app.module.js';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private upgrade: UpgradeModule) {}
+  constructor() {}
 }
 
 // Downgrade del componente per AngularJS con il binding dell'input

@@ -1,5 +1,5 @@
-
 import angular from 'angular';
+
 export const ajsApp = angular.module('ajsApp', []); // Creazione del modulo
 
 ajsApp.controller('MainController', ['$scope', function ($scope) {

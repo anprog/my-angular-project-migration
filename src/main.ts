@@ -1,10 +1,9 @@
 import 'angular'; // Import AngularJS
 import '@angular/upgrade/static'; // Necessario per l'upgrade
-
 import './app/angularjs/ajs-app.module.js'; // Modulo AngularJS
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { UpgradeModule } from '@angular/upgrade/static';
-import { AppModule } from './app/app.module';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {UpgradeModule} from '@angular/upgrade/static';
+import {AppModule} from './app/app.module';
 
 // Bootstrap Angular
 platformBrowserDynamic()
