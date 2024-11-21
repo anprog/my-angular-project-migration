@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, Input, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -37,7 +37,6 @@ const COGNOMI: string[] = [
   ],
 })
 export class HelloWorldComponent implements AfterViewInit {
-  //@Input() name: string = '';
 
   displayedColumns: string[] = ['id', 'nome', 'cognome'];
   dataSource: MatTableDataSource<UserData>;
