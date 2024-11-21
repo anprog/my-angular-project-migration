@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, Input, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {state, style, trigger} from '@angular/animations';
 
 export interface UserData {
   id: string;
@@ -37,7 +37,7 @@ const COGNOMI: string[] = [
   ],
 })
 export class HelloWorldComponent implements AfterViewInit {
-  @Input() name: string = '';
+  //@Input() name: string = '';
 
   displayedColumns: string[] = ['id', 'nome', 'cognome'];
   dataSource: MatTableDataSource<UserData>;
@@ -45,10 +45,10 @@ export class HelloWorldComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Crea 10 utenti
-    const users = Array.from({length: 10}, (_, k) => createNewUser(k + 1));
-    this.dataSource = new MatTableDataSource(users);
+  constructor(@Inject('ajsDataService') private dataService: any) {
+
+    console.log("dati da angularjs:", JSON.stringify(dataService.getData()));
+    this.dataSource = new MatTableDataSource(dataService.getData());
   }
 
   ngAfterViewInit() {
@@ -64,19 +64,4 @@ export class HelloWorldComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const nome =
-    NOMI[Math.round(Math.random() * (NOMI.length - 1))];
-
-  const cognome =
-    COGNOMI[Math.round(Math.random() * (COGNOMI.length - 1))];
-
-  return {
-    id: id.toString(),
-    nome: nome,
-    cognome: cognome
-  };
 }
