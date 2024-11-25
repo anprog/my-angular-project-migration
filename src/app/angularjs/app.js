@@ -2,7 +2,7 @@ import angular from 'angular';
 
 import {ajsDataService} from "./services/ajsDataService";
 import {downgradeComponent} from "@angular/upgrade/static";
-import {HelloWorldComponent} from "../hello-world/hello-world.component";
+import {HelloWorldComponent} from "../components/hello-world/hello-world.component";
 import {ajsMainController} from "./controllers/ajsMainController";
 
 export const ajsApp = angular.module('ajsApp', [ajsDataService.name]); // Includo il modulo del servizio

@@ -5,6 +5,10 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {state, style, trigger} from '@angular/animations';
+import {MatButton} from '@angular/material/button';
+import {NgIf} from '@angular/common';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {RowDetailsModalComponent} from '../row-details-modal/row-details-modal.component';
 
 export interface UserData {
   id: string;
@@ -29,7 +33,7 @@ const COGNOMI: string[] = [
   templateUrl: './hello-world.component.html',
   styleUrl: './hello-world.component.css',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatButton, NgIf, MatDialogModule],
   animations: [
     trigger('arrowPosition', [
       state('start', style({ })),
@@ -41,10 +45,12 @@ export class HelloWorldComponent implements AfterViewInit {
   displayedColumns: string[] = ['id', 'nome', 'cognome'];
   dataSource: MatTableDataSource<UserData>;
 
+  selectedRow: any | null = null; // Riga selezionata
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(@Inject('ajsDataService') private dataService: any) {
+  constructor(@Inject('ajsDataService') private dataService: any, private  dialog: MatDialog) {
 
     console.log("dati da angularjs:", JSON.stringify(dataService.getData()));
     this.dataSource = new MatTableDataSource(dataService.getData());
@@ -63,4 +69,11 @@ export class HelloWorldComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  openDetails(row: any): void {
+    this.dialog.open(RowDetailsModalComponent, {
+      width: '400px',
+      data: row, // Passa i dati della riga alla modale
+    });
+  }
+
 }
