@@ -18,6 +18,5 @@ ajsApp.directive(
   'helloWorld',
   downgradeComponent({
     component: HelloWorldComponent
-    //inputs: ['name']
   })
 );

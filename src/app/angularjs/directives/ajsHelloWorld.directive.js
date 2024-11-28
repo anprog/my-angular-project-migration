@@ -5,7 +5,6 @@ import {HelloWorldComponent} from "../../components/hello-world/hello-world.comp
 angular.module('ajsApp').directive(
   'helloWorld',
   downgradeComponent({
-    component: HelloWorldComponent,
-    inputs: ['name']
+    component: HelloWorldComponent
   })
 );
